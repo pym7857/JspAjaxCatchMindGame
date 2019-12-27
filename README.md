@@ -12,7 +12,7 @@ Design    : BootStrap 3.3.7
 ```
 - 로그인/회원가입
 - Canvas JS
-- Game Channel (Channel 입장후 출제자, 풀이자 선택 기능) 
+- Game Channel (Channel 입장 후 출제자, 풀이자 선택 기능) 
 - 출제자, 풀이자 세션 분리 ! ★How?
 
 - 출제자는 Canvas에 그리기 가능 
