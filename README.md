@@ -1,7 +1,7 @@
 # JspAjaxCatchMindGame
 Jsp Ajax를 이용한 실시간 CatchMind 게임 
 
-## Skills
+## Dependencies
 ```
 DataBase  : MySQL ver8.0.18 
 IDE       : eclipse 2019-09 
