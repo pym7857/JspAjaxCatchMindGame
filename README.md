@@ -4,8 +4,8 @@ Jsp Ajax를 이용한 실시간 CatchMind 게임
 ## Dependencies
 ```
 DataBase  : MySQL ver8.0.18 
-IDE       : eclipse 2019-09 
-Design    : bootStrap 3.3.7
+IDE       : Eclipse 2019-09 
+Design    : BootStrap 3.3.7
 ```
 
 ## To Do List
