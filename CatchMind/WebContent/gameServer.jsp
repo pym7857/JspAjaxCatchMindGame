@@ -7,12 +7,14 @@
 	if(session.getAttribute("userID") != null) {
 		userID = (String) session.getAttribute("userID");
 	}
+	
 %>
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="css/bootstrap.css">
 <link rel="stylesheet" href="css/custom.css?ver=1">
+<link rel="stylesheet" href="css/styles.css">
 <title>Do Catch Mind!</title>
 <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
 <script src="js/bootstrap.js"></script>
@@ -32,8 +34,8 @@
 		</div>
 		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 			<ul class="nav navbar-nav">
-				<li class="active"><a href="index.jsp">메인</a></li>
-				<li><a href="gameServer.jsp">게임서버</a></li>
+				<li><a href="index.jsp">메인</a></li>
+				<li class="active"><a href="gameServer.jsp">게임서버</a></li>
 			</ul>
 			<%
 				if(userID == null) { // 로그인이 안된 유저한테만 보여지는 페이지 
@@ -68,50 +70,33 @@
 			%>
 		</div>
 	</nav>
-	<%
-		String messageContent = null;
-		if (session.getAttribute("messageContent") != null) {
-			messageContent = (String) session.getAttribute("messageContent");
-		}
-		String messageType = null;
-		if (session.getAttribute("messageType") != null) {
-			messageType = (String) session.getAttribute("messageType");
-		}
-		if (messageContent != null) {
-	%>
-	<!-- messageModal -->
-	<div class="modal fade" id="checkModal" tabindex="-1" role="dialog" aria-hidden="true">
-		<div class="vertical-alignment-helper">
-			<div class="modal-dialog vertical-align-center">
-				<div class="modal-content <% if(messageType.equals("오류 메세지")) out.println("panel-warning"); else out.println("panel-success");%>">
-					<div class="modal-header panel-heading">
-						<button type="button" class="close" data-dismiss="modal">
-							<span aria-hidden="true">&times</span>	<!-- x버튼 -->
-							<span class="sr-only">Close</span>
-						</button>
-						<h4 class="modal-title">
-							<%= messageType %>
-						</h4>
-					</div>
-					<div class="modal-body" id="checkMessage">
-						<%= messageContent %>
-					</div>
-					<div class="modal-footer">
-						<button type="button" class="btn btn-primary" data-dismiss="modal">
-							확인
-						</button>
-					</div>
-				</div>
-			</div>
+	<canvas id="jsCanvas" class="canvas"></canvas>
+	<div class="controls">
+		<div class="controls__range">
+			<input type="range"
+			id="jsRange"
+			min="0.1"
+			max="5.0"
+			value="2.5"
+			step="0.1">
+		</div>
+		<div class="controls_btns">
+			<button id="jsMode">Fill</button>
+			<button id="jsClear">Clear</button>
+			<button id="jsSave">Save</button>
+		</div>
+		<div class="colors" id="jsColors">
+			<div class="color jsColor" style="background-color: black;"></div>
+			<div class="color jsColor" style="background-color: white;"></div>
+			<div class="color jsColor" style="background-color: red;"></div>
+			<div class="color jsColor" style="background-color: orange;"></div>
+			<div class="color jsColor" style="background-color: yellow;"></div>
+			<div class="color jsColor" style="background-color: green;"></div>
+			<div class="color jsColor" style="background-color: blue;"></div>
+			<div class="color jsColor" style="background-color: #e128eb;"></div>
+			<div class="color jsColor" style="background-color: #7d868a;"></div>
 		</div>
 	</div>
-	<script>
-		$('#messageModal').modal("show");
-	</script>
-	<%
-		session.removeAttribute("messageContent");
-		session.removeAttribute("messageType");
-		}
-	%>
+	<script src="js/app.js"></script>
 </body>
 </html>

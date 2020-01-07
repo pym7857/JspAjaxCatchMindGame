@@ -7,6 +7,12 @@
 	if(session.getAttribute("userID") != null) {
 		userID = (String) session.getAttribute("userID");
 	}
+	if (userID != null) {
+		session.setAttribute("messageType", "오류 메세지");
+		session.setAttribute("messageContent", "이미 로그인된 회원입니다.");
+		response.sendRedirect("index.jsp");
+		return;
+	}
 %>
 <head>
 <meta charset="UTF-8">
@@ -50,24 +56,44 @@
 				</li>
 			</ul>
 			<%
-				} else {
-			%>
-			<ul class="nav navbar-nav navbar-right">
-				<li class="dropdown">
-					<a href="#" class="dropdown-toggle"
-							data-toggle="dropdown" role="button" aria-haspopup="true"
-							aria-expanded="false">접속하기<span class="caret"></span></a>
-					<ul class="dropdown-menu">
-						<li><a href="profileUpdate.jsp">프로필 수정</a></li>
-						<li><a href="logoutAction.jsp">로그아웃</a></li>
-					</ul>
-				</li>
-			</ul>
-			<%
-				}
+				} 
 			%>
 		</div>
 	</nav>
+	
+	<div class="container">
+		<form method="post" action="./userLogin">
+			<table class="table table-bordered table-hover" 
+			style="text-align: center; border: 1px solid black">
+				<thead>
+					<tr>
+						<th colspan="2"><h4>로그인 양식</h4></th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td style="width: 110px;"><h5>아이디</h5></td>
+						<td>
+						<input class="form-control" type="text" name="userID"
+						maxlength="20" placeholder="아이디를 입력하세요"></td>
+					</tr>
+					<tr>
+						<td style="width: 110px;"><h5>비밀번호</h5></td>
+						<td>
+						<input class="form-control" type="password" 
+						name="userPassword" maxlength="20" placeholder="비밀번호를 입력하세요"></td>
+					</tr>
+					<tr>
+						<td style="text-align: left;" colspan="2">
+							<input class="btn btn-primary pull-right" type="submit"
+							value="로그인">
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</form>
+	</div>
+	
 	<%
 		String messageContent = null;
 		if (session.getAttribute("messageContent") != null) {
@@ -106,12 +132,37 @@
 		</div>
 	</div>
 	<script>
-		$('#messageModal').modal("show");
+		$("#messageModal").modal("show");
 	</script>
 	<%
 		session.removeAttribute("messageContent");
 		session.removeAttribute("messageType");
 		}
 	%>
+	<!-- checkModal -->
+	<div class="modal fade" id="checkModal" tabindex="-1" role="dialog" aria-hidden="true">
+		<div class="vertical-alignment-helper">
+			<div class="modal-dialog vertical-align-center">
+				<div id="checkType" class="modal-content panel-info">
+					<div class="modal-header panel-heading">
+						<button type="button" class="close" data-dismiss="modal">
+							<span aria-hidden="true">&times</span>
+							<span class="sr-only">Close</span>
+						</button>
+						<h4 class="modal-title">
+							확인메세지
+						</h4>
+					</div>
+					<div class="modal-body" id="checkMessage">
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-primary" data-dismiss="modal">
+							확인
+						</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 </body>
 </html>

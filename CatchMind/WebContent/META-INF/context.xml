@@ -4,7 +4,7 @@
 	name="jdbc/CatchMind"
 	auth="Container"
 	type="javax.sql.DataSource"
-	driverClassName="com.mysql.jdbc.Driver"
+	driverClassName="com.mysql.cj.jdbc.Driver"
 	loginTimeout="10"
 	validationQuery="SELECT 1 FROM DUAL"
 	maxWait="5000"
