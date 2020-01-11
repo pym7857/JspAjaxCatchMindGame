@@ -155,4 +155,58 @@ public class UserDAO {
 		return user;
 	}
 	
+	/* userProfile을 dB에 업데이트 */
+	public int profile(String userID, String userProfile) {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		String SQL = "UPDATE user SET userProfile = ? WHERE userID = ?";
+		try {
+			conn = dataSource.getConnection(); // 실질적으로 커넥션풀에 접근하게 해줌
+			pstmt = conn.prepareStatement(SQL); 
+			pstmt.setString(1, userProfile);
+			pstmt.setString(2, userID);
+			return pstmt.executeUpdate(); // update
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if(pstmt != null) pstmt.close();
+				if(conn != null) conn.close();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		return -1; // 데이터베이스 오류
+	}
+	
+	/* userProfile의 경로를 가져오는 메서드 */
+	public String getProfile(String userID) {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String SQL = "SELECT userProfile FROM USER WHERE userID = ?";
+		try {
+			conn = dataSource.getConnection(); // 실질적으로 커넥션풀에 접근하게 해줌
+			pstmt = conn.prepareStatement(SQL); 
+			pstmt.setString(1, userID);
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				if(rs.getString("userProfile").equals("")) {
+					return "http://localhost:8080/CatchMind/images/basic.jpg"; // 기본 상태의 프로필 사진
+				}
+				return "http://localhost:8080/CatchMind/upload/" + rs.getString("userProfile");
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if(pstmt != null) pstmt.close();
+				if(conn != null) conn.close();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		return "http://localhost:8080/CatchMind/images/basic.jpg";
+	}
+	
 }

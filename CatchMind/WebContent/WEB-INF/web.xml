@@ -25,12 +25,20 @@
   	<servlet-name>UserRegisterCheckServlet</servlet-name>
   	<url-pattern>/userRegisterCheck</url-pattern>
   </servlet-mapping>
-    <servlet>
+  <servlet>
   	<servlet-name>UserLoginServlet</servlet-name>
   	<servlet-class>user.UserLoginServlet</servlet-class>
   </servlet>
   <servlet-mapping>
   	<servlet-name>UserLoginServlet</servlet-name>
   	<url-pattern>/userLogin</url-pattern>
+  </servlet-mapping>
+  <servlet>
+  	<servlet-name>UserProfileServlet</servlet-name>
+  	<servlet-class>user.UserProfileServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>UserProfileServlet</servlet-name>
+  	<url-pattern>/userProfile</url-pattern>
   </servlet-mapping>
 </web-app>
