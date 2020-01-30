@@ -1,4 +1,4 @@
-# JspAjaxCatchMindGame
+# JspAjaxCatchMindGame :video_game:
 This repository introduces a RealTimeGame based on JSP Ajax.
 
 ## 0. Development environment
