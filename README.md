@@ -8,14 +8,16 @@ This repository introduces a RealTimeGame based on JSP Ajax.
 * DataBase : MySQL ver8.0.18 
 * Design : BootStrap 3.3.7
 
-## 1. Get UserList who is now connected
+## 1. Web Demo
+
+## 2. Get UserList who is now connected
 
 First,
 
-## 2.
+## 3.
 
 Second, 
 
-## 3.
+## 4.
 
 Third, 
