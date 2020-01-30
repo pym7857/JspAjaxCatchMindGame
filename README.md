@@ -12,12 +12,12 @@
 
 ## ***2. Get UserList who is now connected***
 
-First,
+*First,*
 
 ## 3. ***Share Canvas with others***
 
-Second, 
+*Second, *
 
 ## 4. ***Scheduling***
 
-Third, 
+*Third, *
