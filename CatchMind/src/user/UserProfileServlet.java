@@ -23,7 +23,7 @@ public class UserProfileServlet extends HttpServlet {
 		
 		// cos.jar를 이용하여 파일업로드 환경설정 (MultipartRequest 이용)
 		MultipartRequest multi = null;
-		int fileMaxSize = 10 * 1024 * 1024; // 10MB 제한
+		int fileMaxSize = 10 * 1024 * 1024; // 파일크기 10MB 제한
 		String savePath = request.getRealPath("/upload").replaceAll("\\\\", "/"); // upload라는 폴더를 직접 가서 만들어 줘야됨
 		try {
 			multi = new MultipartRequest(request, savePath, fileMaxSize, "UTF-8", new DefaultFileRenamePolicy());

@@ -1,5 +1,7 @@
 @import url(http://fonts.googleapis.com/earlyaccess/nanumgothic.css);
 @import url(http://fonts.googleapis.com/earlyaccess/hanna.css);
+@font-face { font-family: 'yg-jalnan'; src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_four@1.2/JalnanOTF00.woff') format('woff'); font-weight: normal; font-style: normal; }
+
 * {
 	font-family: 'Nanum Gothic';
 }
@@ -59,3 +61,123 @@ tr th:last-child {
 	display: block;
 }
 
+/* 부트스트랩 로그인 폼 */
+@media (min-width: 768px) {
+    .omb_row-sm-offset-3 div:first-child[class*="col-"] {
+        margin-left: 25%;
+    }
+}
+
+.omb_login .omb_authTitle {
+    text-align: center;
+	line-height: 300%;
+}
+	
+.omb_login .omb_socialButtons a {
+	color: white; // In yourUse @body-bg 
+	opacity:0.9;
+}
+.omb_login .omb_socialButtons a:hover {
+    color: white;
+	opacity:1;    	
+}
+.omb_login .omb_socialButtons .omb_btn-facebook {background: #3b5998;}
+.omb_login .omb_socialButtons .omb_btn-twitter {background: #00aced;}
+.omb_login .omb_socialButtons .omb_btn-google {background: #c32f10;}
+
+
+.omb_login .omb_loginOr {
+	position: relative;
+	font-size: 1.5em;
+	color: #aaa;
+	margin-top: 1em;
+	margin-bottom: 1em;
+	padding-top: 0.5em;
+	padding-bottom: 0.5em;
+}
+.omb_login .omb_loginOr .omb_hrOr {
+	background-color: #cdcdcd;
+	height: 1px;
+	margin-top: 0px !important;
+	margin-bottom: 0px !important;
+}
+.omb_login .omb_loginOr .omb_spanOr {
+	display: block;
+	position: absolute;
+	left: 50%;
+	top: -0.6em;
+	margin-left: -1.5em;
+	background-color: white;
+	width: 3em;
+	text-align: center;
+}			
+
+.omb_login .omb_loginForm .input-group.i {
+	width: 2em;
+}
+.omb_login .omb_loginForm  .help-block {
+    color: red;
+}
+
+@media (min-width: 768px) {
+    .omb_login .omb_forgotPwd {
+        text-align: right;
+		margin-top:10px;
+ 	}		
+}
+
+/* 전체 링크 영역 지정 */
+a {
+    color: #000000;
+    text-decoration: none;
+}
+a:hover{
+    color: #bbbbbb;
+    text-decoration:none;
+    cursor: pointer;
+}
+
+/* 네비게이션 영역 */
+.navbar-default{    /* 배경 색상*/
+    background-color: #2b2b37;
+    border-color: #2b2b37;
+}
+.navbar-default .navbar-brand{ /* 내비게이션 제목 생상 */
+    color: #ffffff;
+    padding-top: 15px;
+    font-family: 'yg-jalnan';
+    font-size: 1.5em;
+}
+.navbar-default .navbar-brand:hover,
+.navbar-default .navbar-brand:focus{ /*내비게이션 제목에 마우스를 올렸을 때 */
+    background-color: transparent;
+    color: #FE9A2E;
+}
+.navbar-default .navbar-nav > .active > a,
+.navbar-default .navbar-nav > .active > a:hover,
+.navbar-default .navbar-nav > .active > a:focus{/* 현재 선택된 내비게이션 색상 이벤트 */
+    color: #FE9A2E;
+    background-color: #000000;
+}
+.navbar-default .navbar-nav > li > a { /*내비게이션 기본 글자 색상 */
+	color: #ffffff;
+    font-family: 'Hanna';
+}
+.navbar-default .navbar-nav > li > a:hover,
+.navbar-default .navbar-nav > li > a:focus { /*내비게이션의 글자에 마우스를 올렸을 때 */
+    color: #FE9A2E;
+}
+.navbar-default .navbar-nav > .open > a,
+.navbar-default .navbar-nav > .open > a:hover,
+.navbar-default .navbar-nav > .open > a:focus{ /* .open : 드랍다운이 열렸을 때 마우스 색상 이벤트  */
+    color: #FE9A2E;
+    background-color: #000000;
+    text-decoration: none;
+}
+.navbar-default .navbar-toggle:hover,
+.navbar-default .navbar-toggle:focus { /* 토글에 마우스를 올렸을 때 */
+	background-color: #dddddd;
+}
+.navbar-default .navbar-toggle: .icon-bar { /* 토글 아이콘 바 색상 */
+	background-color: #dddddd;
+}

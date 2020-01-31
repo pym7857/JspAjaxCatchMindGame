@@ -9,6 +9,7 @@ public class UserDTO {
 	String userEmail;
 	String userProfile; 
 	int userPoint;
+	boolean present;
 	
 	public String getUserID() {
 		return userID;
@@ -57,6 +58,12 @@ public class UserDTO {
 	}
 	public void setUserPoint(int userPoint) {
 		this.userPoint = userPoint;
+	}
+	public boolean isPresent() {
+		return present;
+	}
+	public void setPresent(boolean present) {
+		this.present = present;
 	}
 
 }

@@ -3,6 +3,7 @@ package user;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
 
 import javax.naming.Context;
 import javax.naming.InitialContext;
@@ -91,7 +92,7 @@ public class UserDAO {
 	public int register(String userID, String userPassword, String userName, String userAge, String userGender, String userEmail, String userProfile) {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
-		String SQL = "INSERT INTO USER VALUES (?, ?, ?, ?, ?, ?, ?, 0)";
+		String SQL = "INSERT INTO USER VALUES (?, ?, ?, ?, ?, ?, ?, 0, 0)";
 		try {
 			conn = dataSource.getConnection(); // 실질적으로 커넥션풀에 접근하게 해줌
 			pstmt = conn.prepareStatement(SQL); 
@@ -140,6 +141,7 @@ public class UserDAO {
 				user.setUserEmail(rs.getString("userEmail"));
 				user.setUserProfile(rs.getString("userProfile"));
 				user.setUserPoint(rs.getInt("userPoint"));
+				user.setPresent(rs.getBoolean("present"));
 			} 
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -153,6 +155,37 @@ public class UserDAO {
 			}
 		}
 		return user;
+	}
+	
+	/* present = 1 인 유저들의 userID를 ArrayList로 가져오기 */
+	public ArrayList<String> getPresentUser() {
+		//UserDTO user = new UserDTO();
+		ArrayList<String> arr = null;
+		
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String SQL = "SELECT userID FROM USER WHERE present = 1";
+		try {
+			conn = dataSource.getConnection(); // 실질적으로 커넥션풀에 접근하게 해줌
+			pstmt = conn.prepareStatement(SQL); 
+			rs = pstmt.executeQuery();
+			arr = new ArrayList<String>();
+			while(rs.next()) {
+				arr.add(rs.getString("userID"));
+			} 
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if(rs != null) rs.close();
+				if(pstmt != null) pstmt.close();
+				if(conn != null) conn.close();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		return arr;
 	}
 	
 	/* userProfile을 dB에 업데이트 */
@@ -207,6 +240,34 @@ public class UserDAO {
 			}
 		}
 		return "http://localhost:8080/CatchMind/images/basic.jpg";
+	}
+	
+	/* present변수 true로 바꿔주는 메서드 */
+	public int setPresentOn(String userID, boolean present) {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		String SQL = null;
+		
+		if (present == true) 
+			SQL = "UPDATE USER SET present = 1 WHERE userID = ?";
+		else
+			SQL = "UPDATE USER SET present = 0 WHERE userID = ?";
+		try {
+			conn = dataSource.getConnection(); // 실질적으로 커넥션풀에 접근하게 해줌
+			pstmt = conn.prepareStatement(SQL); 
+			pstmt.setString(1, userID);
+			return pstmt.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if(pstmt != null) pstmt.close();
+				if(conn != null) conn.close();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		return -1; // 데이터베이스 오류
 	}
 	
 }
