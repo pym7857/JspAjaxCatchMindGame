@@ -5,8 +5,9 @@
 * *OS : Windosw 10*
 * *IDE : JavaEE*
 * *Language : Java*
-* *DataBase : MySQL ver8.0.18*
-* *Design : BootStrap 3.3.7*
+* *MySQL ver8.0.18*
+* *BootStrap 3.3.7*
+* *Tomcat v8.5*
 
 ## ***1. Web Demo***
 
